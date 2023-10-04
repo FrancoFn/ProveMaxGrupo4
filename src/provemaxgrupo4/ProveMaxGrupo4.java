@@ -5,6 +5,9 @@
  */
 package provemaxgrupo4;
 
+import provemaxgrupo4.AccesoADatos.Conexion;
+import provemaxgrupo4.Vistas.Menu;
+
 /**
  *
  * @author bruno
@@ -15,7 +18,14 @@ public class ProveMaxGrupo4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       Conexion.getConexion();     
+        Menu.getWindows();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Menu().setVisible(true);
+            }
+        }
+        );
     }
     
 }
