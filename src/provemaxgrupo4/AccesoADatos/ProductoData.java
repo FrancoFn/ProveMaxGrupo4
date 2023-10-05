@@ -84,14 +84,14 @@ public class ProductoData {
         
         
     }
-    public List<Producto> listarProductosActivos(){
-       String sql = "SELECT * FROM producto WHERE estado =1";
+    public List<Producto> listarProductosActivos(int id){
+       String sql = "SELECT * FROM producto WHERE estado =?";
 
         ArrayList<Producto> listaProducto = new ArrayList<>();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -103,7 +103,6 @@ public class ProductoData {
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
-                
 
                 listaProducto.add(producto);
             }
