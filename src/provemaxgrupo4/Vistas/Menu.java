@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
+        ButtonProveedor = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -56,23 +57,38 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        ButtonProveedor.setText("PROVEEDOR");
+        ButtonProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonProveedorActionPerformed(evt);
+            }
+        });
+
         jDesktopPane2.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(ButtonProveedor, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jButton1)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jButton1))
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ButtonProveedor)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(jButton1)
-                .addContainerGap(623, Short.MAX_VALUE))
+                .addGap(80, 80, 80)
+                .addComponent(ButtonProveedor)
+                .addContainerGap(520, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -110,6 +126,15 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(gProd);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void ButtonProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedorActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionDeProveedores proved = new GestionDeProveedores();
+        proved.setVisible(true);
+        escritorio.add(proved);
+        escritorio.moveToFront(proved);
+    }//GEN-LAST:event_ButtonProveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -146,6 +171,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonProveedor;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane2;
