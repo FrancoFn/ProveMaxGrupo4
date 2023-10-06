@@ -11,22 +11,27 @@ public class Proveedor {
     private String razonSocial;
     private String domicilio;
     private String telefono;
+    private boolean activo;
 
     public Proveedor() {
     }
 
-    public Proveedor(String razonSocial, String domicilio, String telefono) {
-        this.razonSocial = razonSocial;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
-    }
-
-    public Proveedor(int idProveedor, String razonSocial, String domicilio, String telefono) {
+    public Proveedor(int idProveedor, String razonSocial, String domicilio, String telefono, boolean activo) {
         this.idProveedor = idProveedor;
         this.razonSocial = razonSocial;
         this.domicilio = domicilio;
         this.telefono = telefono;
+         this.activo = activo;
     }
+
+    public Proveedor(String razonSocial, String domicilio, String telefono, boolean activo) {
+        this.razonSocial = razonSocial;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.activo = activo;
+    }
+    
+    
 
     public int getIdProveedor() {
         return idProveedor;
@@ -60,12 +65,19 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    @Override
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+      @Override
     public String toString() {
             return razonSocial +", Codigo " + idProveedor ;
     }
 
-   
     
     
     
