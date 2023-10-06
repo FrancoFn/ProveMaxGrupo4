@@ -13,15 +13,15 @@ import java.util.List;
  *
  * @author luz
  */
-public class compra {
+public class Compra {
    int id;
    List<Producto> productos = new ArrayList<>();
     Date fecha;
    double total;
-   String proveedor;
+   Proveedor proveedor;
    boolean estado;
 
-    public compra(int id, Date fecha, double total, String proveedor, boolean estado) {
+    public Compra(int id, Date fecha, double total, Proveedor proveedor, boolean estado) {
         this.id = id;
         this.fecha = fecha;
         this.total = total;
@@ -29,7 +29,7 @@ public class compra {
         this.estado = estado;
     }
 
-    public compra() {
+    public Compra() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -65,11 +65,11 @@ public class compra {
         this.total = total;
     }
 
-    public String getProveedor() {
+    public Proveedor getProveedor() {
         return proveedor;
     }
 
-    public void setProveedor(String proveedor) {
+    public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
 
