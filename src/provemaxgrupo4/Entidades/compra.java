@@ -29,6 +29,10 @@ public class compra {
         this.estado = estado;
     }
 
+    public compra() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId() {
         return id;
     }
@@ -76,9 +80,6 @@ public class compra {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
-   
-   
 
    
 }

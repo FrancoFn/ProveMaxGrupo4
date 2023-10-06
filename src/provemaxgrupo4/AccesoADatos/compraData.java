@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import provemaxgrupo4.Entidades.compra;
 
@@ -49,7 +51,49 @@ public class compraData {
             JOptionPane.showMessageDialog(null, "Error al cargar la compra");
         }
     }
-}
+    public void eliminarCompra(int id){
+    String sql = "UPDATE compra SET estado = 0 WHERE idcompra= ?";
     
-  
+     try {
+            PreparedStatement ps = Con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Compra Eliminada");
+            }
+     } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la compra");
+        }
+        
+    }
+    public List<compra> listarcomprasactivas(int id){
+         String sql = "SELECT * FROM compra WHERE estado =?";
+         
+       ArrayList<compra>listacompra = new ArrayList<>();
+       
+     try {
+            PreparedStatement ps = Con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+          while (rs.next()) {
+              compra compra = new compra();
+            compra.setId(rs.getInt("idcompra"));
+            compra.setProveedor(rs.getString("proveedor"));
+            compra.setFecha(rs.getDate("fecha"));
+            compra.setEstado(rs.getBoolean("estado"));
 
+            // Agregar la compra a la lista
+            listacompra.add(compra);
+            
+        }
+       rs.close();
+       ps.close();   
+ 
+    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la compra");
+        }
+        return listacompra;
+    }
+
+    
+}
