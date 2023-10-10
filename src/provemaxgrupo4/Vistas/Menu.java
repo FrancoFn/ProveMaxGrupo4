@@ -31,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
         ButtonProveedor = new javax.swing.JButton();
+        jBVentas = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -64,8 +65,16 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jBVentas.setText("Ventas");
+        jBVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVentasActionPerformed(evt);
+            }
+        });
+
         jDesktopPane2.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(ButtonProveedor, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jBVentas, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -78,7 +87,10 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ButtonProveedor)))
+                        .addComponent(ButtonProveedor))
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBVentas)))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -88,7 +100,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(80, 80, 80)
                 .addComponent(ButtonProveedor)
-                .addContainerGap(520, Short.MAX_VALUE))
+                .addGap(66, 66, 66)
+                .addComponent(jBVentas)
+                .addContainerGap(431, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -135,6 +149,15 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(proved);
     }//GEN-LAST:event_ButtonProveedorActionPerformed
 
+    private void jBVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVentasActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionDeVentas gVentas = new GestionDeVentas();
+        gVentas.setVisible(true);
+        escritorio.add(gVentas);
+        escritorio.moveToFront(gVentas);
+    }//GEN-LAST:event_jBVentasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -173,6 +196,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonProveedor;
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JButton jBVentas;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JMenu jMenu1;
