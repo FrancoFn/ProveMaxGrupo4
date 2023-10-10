@@ -87,6 +87,12 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Domicilio");
 
+        jTextFieldTelefono.setEnabled(false);
+        jTextFieldTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldTelefonoFocusLost(evt);
+            }
+        });
         jTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTelefonoActionPerformed(evt);
@@ -101,6 +107,12 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             }
         });
 
+        jTextFieldNombre.setEnabled(false);
+        jTextFieldNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldNombreFocusLost(evt);
+            }
+        });
         jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldNombreKeyReleased(evt);
@@ -125,6 +137,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             }
         });
 
+        jTextFieldCodigo.setEnabled(false);
         jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCodigoActionPerformed(evt);
@@ -178,6 +191,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Telefono");
 
+        jTextFieldDomicilio.setEnabled(false);
         jTextFieldDomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldDomicilioKeyReleased(evt);
@@ -322,6 +336,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         int id = Integer.parseInt(jTextFieldCodigo.getText());
         proveedorData.eliminarProveedor(id);
+        limpiar();
         cargarComboBox();
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
@@ -337,6 +352,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             }
             proveedor.setDomicilio(jTextFieldDomicilio.getText());
             proveedor.setTelefono(jTextFieldTelefono.getText());
+            proveedor.setActivo(true);
             proveedorData.guardarProveedor(proveedor);
             limpiar();
             cargarComboBox();
@@ -405,7 +421,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
 
     private void jTextFieldDomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDomicilioKeyTyped
       char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') && (letra < '0' || letra > '9')) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldDomicilioKeyTyped
@@ -413,6 +429,27 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     private void jTextFieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTelefonoActionPerformed
+
+    private void jTextFieldTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoFocusLost
+    try{ Integer.parseInt(jTextFieldTelefono.getText());
+        
+    }catch(NumberFormatException e){
+        jTextFieldTelefono.setText("");
+        JOptionPane.showMessageDialog(this,"Solo se permiten numeros, intente nuevamente","ERROR",JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_jTextFieldTelefonoFocusLost
+
+    private void jTextFieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusLost
+    String texto = jTextFieldNombre.getText();
+    for(int i =0; i < texto.length(); i++){
+        if(Character.isDigit(texto.charAt(i))){
+            jTextFieldNombre.setText("");
+            JOptionPane.showMessageDialog(this,"Solo se permiten letras, intente nuevamente","ERROR",JOptionPane.ERROR_MESSAGE);
+
+        break;
+        }
+}
+    }//GEN-LAST:event_jTextFieldNombreFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -482,9 +519,12 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
                     && !jTextFieldDomicilio.getText().isEmpty()) {
                 jButtonGuardar.setEnabled(true);
                 
+                
             } else {
                 jButtonGuardar.setEnabled(false);
             }
+            
+           
         }
     }
 
