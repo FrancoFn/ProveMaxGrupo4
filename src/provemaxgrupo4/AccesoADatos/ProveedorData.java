@@ -27,14 +27,15 @@ public class ProveedorData {
       
        public void guardarProveedor(Proveedor proveedor) {
 
-        String sql = "INSERT INTO proveedor (razonSocial, domicilio, telefono)"
-                + "VALUES(?,?,?)";
+        String sql = "INSERT INTO proveedor (razonSocial, domicilio, telefono, estado)"
+                + "VALUES(?,?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, proveedor.getRazonSocial());
             ps.setString(2, proveedor.getDomicilio());
             ps.setString(3, proveedor.getTelefono());
+            ps.setBoolean(4, proveedor.isActivo());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
