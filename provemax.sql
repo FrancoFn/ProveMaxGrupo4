@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2023 a las 23:18:40
+-- Tiempo de generación: 12-10-2023 a las 00:25:57
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -52,13 +52,32 @@ CREATE TABLE `detallecompra` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pdf`
+--
+
+CREATE TABLE `pdf` (
+  `idPDF` int(11) NOT NULL,
+  `Nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pdf`
+--
+
+INSERT INTO `pdf` (`idPDF`, `Nombre`) VALUES
+(1, '1 asd'),
+(2, '2 Franco');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `producto`
 --
 
 CREATE TABLE `producto` (
   `idProducto` int(11) NOT NULL,
-  `nombreProducto` varchar(11) NOT NULL,
-  `descripcion` varchar(11) NOT NULL,
+  `nombreProducto` varchar(50) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
   `precioActual` double NOT NULL,
   `stock` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
@@ -70,7 +89,8 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`idProducto`, `nombreProducto`, `descripcion`, `precioActual`, `stock`, `estado`) VALUES
 (1, 'Microhondas', 'AWT', 35000, 12, 1),
-(2, 'Lavarropas', 'Dream', 42000, 27, 0);
+(2, 'Lavarropas', 'Dream', 42000, 27, 0),
+(3, 'Heladera', 'NoFrost', 320000, 20, 1);
 
 -- --------------------------------------------------------
 
@@ -80,10 +100,19 @@ INSERT INTO `producto` (`idProducto`, `nombreProducto`, `descripcion`, `precioAc
 
 CREATE TABLE `proveedor` (
   `idProveedor` int(11) NOT NULL,
-  `razonSocial` text NOT NULL,
-  `domicilio` text NOT NULL,
-  `telefono` text NOT NULL
+  `razonSocial` varchar(50) NOT NULL,
+  `domicilio` varchar(50) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`idProveedor`, `razonSocial`, `domicilio`, `telefono`, `estado`) VALUES
+(1, 'Luis S A', 'Virasoro 1224', '335489', 0),
+(2, 'Pp SRL', 'lala 123', '123', 1);
 
 --
 -- Índices para tablas volcadas
@@ -103,6 +132,12 @@ ALTER TABLE `detallecompra`
   ADD PRIMARY KEY (`idDetalle`),
   ADD KEY `compra` (`compra`),
   ADD KEY `producto` (`producto`);
+
+--
+-- Indices de la tabla `pdf`
+--
+ALTER TABLE `pdf`
+  ADD PRIMARY KEY (`idPDF`);
 
 --
 -- Indices de la tabla `producto`
@@ -133,16 +168,22 @@ ALTER TABLE `detallecompra`
   MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `pdf`
+--
+ALTER TABLE `pdf`
+  MODIFY `idPDF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
