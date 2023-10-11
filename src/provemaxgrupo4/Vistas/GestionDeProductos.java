@@ -1,4 +1,3 @@
-
 package provemaxgrupo4.Vistas;
 
 import java.awt.event.KeyEvent;
@@ -9,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 import provemaxgrupo4.AccesoADatos.Conexion;
 import provemaxgrupo4.AccesoADatos.ProductoData;
 import provemaxgrupo4.Entidades.Producto;
-
 
 public class GestionDeProductos extends javax.swing.JInternalFrame {
 
@@ -133,18 +131,44 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Stock:");
 
+        jTNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTNombreFocusLost(evt);
+            }
+        });
         jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTNombreKeyTyped(evt);
             }
         });
 
+        jTDescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTDescripcionFocusLost(evt);
+            }
+        });
+        jTDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTDescripcionKeyTyped(evt);
+            }
+        });
+
+        jTPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTPrecioFocusLost(evt);
+            }
+        });
         jTPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTPrecioKeyTyped(evt);
             }
         });
 
+        jTStock.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTStockFocusLost(evt);
+            }
+        });
         jTStock.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTStockKeyTyped(evt);
@@ -273,22 +297,24 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
-        char c = evt.getKeyChar();
-        if (!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar() == KeyEvent.VK_SPACE) && !(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
+        char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
             evt.consume();
         }
     }//GEN-LAST:event_jTNombreKeyTyped
 
     private void jTPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTPrecioKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
+        char letra = evt.getKeyChar();
+
+        if (letra < '0' || letra > '9') {
             evt.consume();
         }
     }//GEN-LAST:event_jTPrecioKeyTyped
 
     private void jTStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTStockKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
+        char letra = evt.getKeyChar();
+
+        if (letra < '0' || letra > '9') {
             evt.consume();
         }
     }//GEN-LAST:event_jTStockKeyTyped
@@ -317,7 +343,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-       if (jTNombre.getText().isEmpty() || jTDescripcion.getText().isEmpty() || jTPrecio.getText().isEmpty() || jTStock.getText().isEmpty()) {
+        if (jTNombre.getText().isEmpty() || jTDescripcion.getText().isEmpty() || jTPrecio.getText().isEmpty() || jTStock.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Faltan Datos");
         } else {
             modificarProducto();
@@ -325,14 +351,14 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        if (jRadioButton1.isSelected()){
+        if (jRadioButton1.isSelected()) {
             jRadioButton2.setSelected(false);
             listarProductos();
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        if(jRadioButton2.isSelected()){
+        if (jRadioButton2.isSelected()) {
             jRadioButton1.setSelected(false);
             listarProductos();
         }
@@ -341,6 +367,57 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jTDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDescripcionKeyTyped
+        char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTDescripcionKeyTyped
+
+    private void jTPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTPrecioFocusLost
+        try {
+            Double.parseDouble(jTPrecio.getText());
+
+        } catch (NumberFormatException e) {
+            jTPrecio.setText("");
+            JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jTPrecioFocusLost
+
+    private void jTStockFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTStockFocusLost
+        try {
+            Integer.parseInt(jTStock.getText());
+
+        } catch (NumberFormatException e) {
+            jTStock.setText("");
+            JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jTStockFocusLost
+
+    private void jTNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreFocusLost
+        String texto = jTNombre.getText();
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                jTNombre.setText("");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTNombreFocusLost
+
+    private void jTDescripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDescripcionFocusLost
+        String texto = jTDescripcion.getText();
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                jTDescripcion.setText("");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTDescripcionFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -388,7 +465,7 @@ public void limpiaR() {
                 modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
                     producto.getPrecioActual(), producto.getStock(), producto.isEstado()});
             }
-        } else if(jRadioButton2.isSelected()){
+        } else if (jRadioButton2.isSelected()) {
             prodList = pData.listarProductosActivos(0);
             for (Producto producto : prodList) {
                 modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
@@ -401,7 +478,8 @@ public void limpiaR() {
         pData.eliminarProducto(Integer.parseInt(jLId.getText()));
         limpiaR();
     }
-    public void modificarProducto(){
+
+    public void modificarProducto() {
         Producto producto = new Producto();
         producto.setNombreProducto(jTNombre.getText());
         producto.setDescripcion(jTDescripcion.getText());

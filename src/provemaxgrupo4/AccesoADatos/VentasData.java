@@ -14,6 +14,8 @@ import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,25 +29,44 @@ import provemaxgrupo4.Entidades.Ventas;
 public class VentasData {
    
     private Connection con = null;
-    Ventas datosVentas = new Ventas();
+  
     public VentasData() {
         con = Conexion.getConexion();
     }
     
-     public Ventas Nfact() {        
-        String sql="select idPDF from pdf ORDER BY idPDF DESC Limit 1";
-        ResultSet resul = null;       
-        try {
-            PreparedStatement st = con.prepareStatement(sql);
-            resul = st.executeQuery();
-            datosVentas.setNventa(resul.getInt("idPDF"));            
-          // int nlic = resul.getInt("nLiq");
-        } catch (Exception ex) {
-            
-        }return datosVentas;
+    public Ventas Nfact() {        
+    String sql = "select idPDF from pdf ORDER BY idPDF DESC Limit 1";
+    ResultSet resul = null; 
+    Ventas datosVentas = new Ventas();
+    try {
+        PreparedStatement st = con.prepareStatement(sql);
+        resul = st.executeQuery();
+        
+        if (resul.next()) {
+            datosVentas.setNventa(resul.getInt("idPDF"));
+        } else {
+            System.out.println("No se encontraron resultados en la consulta.");
+        }
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Error al cargar factura");
     }
+    return datosVentas;
+}
     
-    
+    public void insertarVenta(String nombre){
+        String sql = "INSERT INTO pdf (Nombre) VALUES (?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, nombre);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar factura");
+        }  
+    }
     
     public Document CrearDoc(Document documento,FileOutputStream archivo,String nombre,String apellido, int telefono,String direccion,String nFact){
         

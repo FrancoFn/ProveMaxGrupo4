@@ -20,10 +20,10 @@ import provemaxgrupo4.AccesoADatos.VentasData;
 import provemaxgrupo4.Entidades.Producto;
 import provemaxgrupo4.Entidades.Ventas;
 
-
 public class GestionDeVentas extends javax.swing.JInternalFrame {
+
     List<Producto> producto;
-     ArrayList<Producto> produc= new ArrayList<Producto>();
+    ArrayList<Producto> produc = new ArrayList<Producto>();
     //Producto producto = new Producto();
     ProductoData pData = new ProductoData();
     DefaultComboBoxModel combo = new DefaultComboBoxModel();
@@ -32,12 +32,12 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
     double interes;
     VentasData vData = new VentasData();
-    
+    double total;
     Document documento;
     FileOutputStream archivo;
     Paragraph titulo;
-    
-    
+    Ventas nF= new Ventas();
+
     public GestionDeVentas() {
         initComponents();
         modelo = (DefaultTableModel) this.jTable1.getModel();
@@ -62,7 +62,7 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jCCuotas = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        jBPDF = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -76,22 +76,12 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
         jLNFactura = new javax.swing.JLabel();
 
         jCProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCProductosActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Producto:");
 
         jLabel2.setText("Medio de pago:");
 
         jCMedioPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCMedioPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCMedioPagoActionPerformed(evt);
-            }
-        });
 
         jBAgregar.setText("Agregar");
         jBAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,16 +110,11 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
         jLabel5.setText("Cuotas:");
 
         jCCuotas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCCuotas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCCuotasActionPerformed(evt);
-            }
-        });
 
-        jButton2.setText("Generar Factura");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBPDF.setText("Generar Factura");
+        jBPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBPDFActionPerformed(evt);
             }
         });
 
@@ -141,9 +126,47 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Direccion:");
 
-        jTNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNombreActionPerformed(evt);
+        jTNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTNombreFocusLost(evt);
+            }
+        });
+        jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNombreKeyTyped(evt);
+            }
+        });
+
+        jTApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTApellidoFocusLost(evt);
+            }
+        });
+        jTApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellidoKeyTyped(evt);
+            }
+        });
+
+        jTTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTTelefonoFocusLost(evt);
+            }
+        });
+        jTTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTTelefonoKeyTyped(evt);
+            }
+        });
+
+        jTDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTDireccionFocusLost(evt);
+            }
+        });
+        jTDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTDireccionKeyTyped(evt);
             }
         });
 
@@ -158,7 +181,7 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBPDF)
                 .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -239,41 +262,108 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBPDF)
                 .addGap(51, 51, 51))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTNombreActionPerformed
-
-    private void jCProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCProductosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCProductosActionPerformed
-
-    private void jCMedioPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCMedioPagoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCMedioPagoActionPerformed
-
-    private void jCCuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCuotasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCCuotasActionPerformed
-
     private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
-     cargarProducto();
+        if(jCProductos.getSelectedIndex()>0 && jCCuotas.getSelectedIndex()>0 && jCMedioPago.getSelectedIndex()>0){         
+          cargarProducto();  
+        }else{
+         JOptionPane.showMessageDialog(this, "Seleccione las opciones correspondientes", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jBAgregarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       crearPlantilla();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jBPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPDFActionPerformed
+        if(jTNombre.getText().isEmpty() || jTApellido.getText().isEmpty() || jTDireccion.getText().isEmpty() ||jTTelefono.getText().isEmpty() ){
+            JOptionPane.showMessageDialog(this, "Complete todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+        crearPlantilla();
+        }
+    }//GEN-LAST:event_jBPDFActionPerformed
+
+    private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
+        char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTNombreKeyTyped
+
+    private void jTNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreFocusLost
+         String texto = jTNombre.getText();
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                jTNombre.setText("");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTNombreFocusLost
+
+    private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
+        char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTApellidoKeyTyped
+
+    private void jTApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTApellidoFocusLost
+         String texto = jTNombre.getText();
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                jTNombre.setText("");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTApellidoFocusLost
+
+    private void jTTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTTelefonoKeyTyped
+        char letra = evt.getKeyChar();
+
+        if (letra < '0' || letra > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTTelefonoKeyTyped
+
+    private void jTTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoFocusLost
+        try {
+            Integer.parseInt(jTTelefono.getText());
+
+        } catch (NumberFormatException e) {
+            jTTelefono.setText("");
+            JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jTTelefonoFocusLost
+
+    private void jTDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDireccionKeyTyped
+        char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTDireccionKeyTyped
+
+    private void jTDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDireccionFocusLost
+        String texto = jTNombre.getText();
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                jTNombre.setText("");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTDireccionFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAgregar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBPDF;
     private javax.swing.JComboBox<String> jCCuotas;
     private javax.swing.JComboBox<String> jCMedioPago;
     private javax.swing.JComboBox<String> jCProductos;
@@ -295,6 +385,18 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
+   
+    public void validacion2(){
+        String texto = jTNombre.getText();
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i))) {
+                jTNombre.setText("");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+                break;
+            }
+        }
+    }
     public void comboProd() {
 
         this.producto = pData.listarProductos();
@@ -323,40 +425,38 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
         combo2.addElement(24);
         jCCuotas.setModel(combo2);
     }
-    private void interesX(){
-        if(jCCuotas.getSelectedIndex()==0){
-          interes=0.8;
-        }else if(jCCuotas.getSelectedIndex()==1){
-            interes=1.25;
-        }else if(jCMedioPago.getSelectedIndex()==0 && jCCuotas.getSelectedIndex()==1){
-            interes=1;
-        }else if(jCCuotas.getSelectedIndex()==2){
-            interes=1.50;
-         }else if(jCCuotas.getSelectedIndex()==3){
-            interes=2;
-         }else if(jCCuotas.getSelectedIndex()==4){
-            interes=4;
+
+    private void interesX() {
+        if (jCCuotas.getSelectedIndex() == 0) {
+            interes = 0.8;
+        } else if (jCCuotas.getSelectedIndex() == 1) {
+            interes = 1.25;
+        } else if (jCMedioPago.getSelectedIndex() == 0 && jCCuotas.getSelectedIndex() == 1) {
+            interes = 1;
+        } else if (jCCuotas.getSelectedIndex() == 2) {
+            interes = 1.50;
+        } else if (jCCuotas.getSelectedIndex() == 3) {
+            interes = 2;
+        } else if (jCCuotas.getSelectedIndex() == 4) {
+            interes = 4;
         }
 
-        
     }
-     private void cargarProducto() {
+
+    private void cargarProducto() {
         //FUNCIONA
-         interesX();
-         System.out.println(interes);
+        interesX();
         Producto prodT = (Producto) jCProductos.getSelectedItem();
-            producto = pData.listarProductosActivos(1);
-            for (Producto prod : producto) {
-                double precio=prod.getPrecioActual()*interes;
-                prod.setPrecioActual(precio);
-                modelo.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(), prod.getDescripcion(),
-                    (prod.getPrecioActual())});
-                
-                produc.add(prod);
-            }
-        
+        producto = pData.listarProductosActivos(1);
+        double precio = prodT.getPrecioActual() * interes;
+        prodT.setPrecioActual(precio);
+        modelo.addRow(new Object[]{prodT.getIdProducto(), prodT.getNombreProducto(), prodT.getDescripcion(),
+            ("$ "+prodT.getPrecioActual())});
+        produc.add(prodT);
+        total+=precio;
     }
-    public void limpiarDatos(){
+
+public void limpiarDatos(){
        jTNombre.setText("");
        jTApellido.setText("");
        jTDireccion.setText("");
@@ -368,20 +468,21 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     
     public void nFactura(){
       Ventas nF=vData.Nfact();
+      jLNFactura.setText((nF.getNventa()+1)+""); 
       if (nF.getNventa()==0){
           jLNFactura.setText(1+"");
-      }else{
-       jLNFactura.setText((nF.getNventa()+1)+"");  
-    }}
+      }
+    }
     
     
     public void crearPlantilla() {
+       VentasData ventas= new VentasData();
+       String nombrefact=(jLNFactura.getText()+" "+jTNombre.getText());
+       ventas.insertarVenta(nombrefact);
        String nombreArchivo = jLNFactura.getText()+"_"+jTNombre.getText()+ ".pdf";    
         try {           
             String ruta = System.getProperty("user.home");
-            System.out.println(ruta);
             String crear = ruta + "\\OneDrive\\Documentos\\Factura Ventas\\";
-            System.out.println(crear);
             File carpeta = new File(crear);
             if (!carpeta.exists()) {
                 if (carpeta.mkdirs()) {
@@ -390,11 +491,9 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
                     System.out.println("Error al crear directorio");
                 }
             }
-            System.out.println(nombreArchivo);
             documento = new Document();
             archivo = new FileOutputStream(ruta + "/OneDrive/Documentos/Factura Ventas/" + nombreArchivo);  
             vData.CrearDoc(documento, archivo, jTNombre.getText(), jTApellido.getText(), Integer.parseInt(jTTelefono.getText()), jTDireccion.getText(),jLNFactura.getText());
-            System.out.println("lalala");
             PdfPTable tabla = new PdfPTable(4);
             tabla.setWidthPercentage(100);
             PdfPCell id = new PdfPCell(new Phrase("ID"));
@@ -411,23 +510,24 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
                     tabla.addCell(pr.getIdProducto()+"");
                     tabla.addCell(pr.getNombreProducto());
                     tabla.addCell(pr.getDescripcion());
-                    tabla.addCell(pr.getPrecioActual()+"");
+                    tabla.addCell("$ "+pr.getPrecioActual());
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, " Error no funciona " + ex.getMessage());
             }
             tabla.addCell("Total");
-           tabla.addCell("");
-          //  tabla.addCell(liquida.getTotalPago() + "");
+            tabla.addCell("");
+            tabla.addCell("");
+            tabla.addCell("$ "+total);
             documento.add(tabla);
-            System.out.println("casi");
             documento.close();
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
         } catch (DocumentException e) {
             System.err.println(e.getMessage());
         }
-        
+         modelo.setRowCount(0);
+         nFactura();
     }
     
 }
