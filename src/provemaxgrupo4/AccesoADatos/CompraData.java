@@ -49,6 +49,28 @@ public class CompraData {
         }
     }
 
+       public void insertarCompra(Compra compra) {
+        String sql = "INSERT INTO compra (proveedor, fecha)"
+                + "VALUES (?,?)";
+        try (PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
+            ps.setInt(1, compra.getProveedor().getIdProveedor());
+            ps.setDate(2, Date.valueOf(compra.getFechaCompra()));         
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                compra.setIdCompra(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "COMPRA GUARDADO");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor//metodo guardarCompra");
+        }
+    }
+       
+       
+       
+       
+       
     public void modificarCompra(Compra compra) {
 
         String sql = "UPDATE compra SET proveedor = ?, fecha = ?, estado = ?, detalleCompra = ? WHERE idCompra = ?";
@@ -110,5 +132,6 @@ public class CompraData {
         }
         return listacompra;
     }
+    
 
 }
