@@ -1,69 +1,50 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package provemaxgrupo4.Entidades;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
-/**
- *
- * @author luz
- */
 public class Compra {
-   int id;
-   List<Producto> productos = new ArrayList<>();
-    Date fecha;
-   double total;
-   Proveedor proveedor;
-   boolean estado;
+   private int idCompra;
+   private Proveedor proveedor;
+   private LocalDate fechaCompra;
+   private boolean estado;
+   private DetalleCompra detalleCompra;
 
-    public Compra(int id, Date fecha, double total, Proveedor proveedor, boolean estado) {
-        this.id = id;
-        this.fecha = fecha;
-        this.total = total;
+   public Compra() {
+    } 
+   
+   public Compra(int idCompra, LocalDate fechaCompra, Proveedor proveedor, boolean estado, DetalleCompra detalleCompra) {
+        this.idCompra = idCompra;
+        this.fechaCompra = fechaCompra;
         this.proveedor = proveedor;
         this.estado = estado;
+        this.detalleCompra = detalleCompra;
     }
 
-    public Compra() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
+    public Compra(LocalDate fechaCompra, Proveedor proveedor, boolean estado, DetalleCompra detalleCompra) {
+        this.fechaCompra = fechaCompra;
+        this.proveedor = proveedor;
+        this.estado = estado;
+        this.detalleCompra = detalleCompra;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCompra() {
+        return idCompra;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCompra(int idCompra) {
+        this.idCompra = idCompra;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public LocalDate getFechaCompra() {
+        return fechaCompra;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setFechaCompra(LocalDate fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
 
     public Proveedor getProveedor() {
         return proveedor;
@@ -81,5 +62,16 @@ public class Compra {
         this.estado = estado;
     }
 
+    public DetalleCompra getDetalleCompra() {
+        return detalleCompra;
+    }
+
+    public void setDetalleCompra(DetalleCompra detalleCompra) {
+        this.detalleCompra = detalleCompra;
+    }
+    
+    
+
+    
    
 }

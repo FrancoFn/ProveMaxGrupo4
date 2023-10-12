@@ -91,11 +91,6 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
                 jTextFieldTelefonoFocusLost(evt);
             }
         });
-        jTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTelefonoActionPerformed(evt);
-            }
-        });
         jTextFieldTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldTelefonoKeyReleased(evt);
@@ -435,10 +430,6 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldDomicilioKeyTyped
-
-    private void jTextFieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTelefonoActionPerformed
 
     private void jTextFieldTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoFocusLost
         if (!jTextFieldTelefono.getText().equals("")) {
