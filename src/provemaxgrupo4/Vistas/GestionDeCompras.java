@@ -12,6 +12,8 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import provemaxgrupo4.AccesoADatos.CompraData;
 import provemaxgrupo4.AccesoADatos.ProductoData;
@@ -26,21 +28,24 @@ import provemaxgrupo4.Entidades.Proveedor;
  */
 public class GestionDeCompras extends javax.swing.JInternalFrame {
 
-    
-    private DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo = new DefaultTableModel();
     DefaultComboBoxModel combo = new DefaultComboBoxModel();
+    SpinnerModel modelsp = new SpinnerNumberModel();
+
     ProductoData pData = new ProductoData();
     List<Producto> prodList;
     List<Proveedor> provList;
-    ProveedorData provData= new ProveedorData();
-    CompraData cData= new CompraData();
+    ProveedorData provData = new ProveedorData();
+    CompraData cData = new CompraData();
     SimpleDateFormat formato = new SimpleDateFormat("yyyy-MMM-dd");
     DateTimeFormatter format = new DateTimeFormatterBuilder().append(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toFormatter();
     SimpleDateFormat formate = new SimpleDateFormat("dd-MMM-yyyy");
     LocalDate fecha;
     private DefaultTableModel modelo1 = new DefaultTableModel();
-    
-    
+    int idProd;
+    int spinner;
+    Producto prod = new Producto();
+
     public GestionDeCompras() {
         initComponents();
         modelo = (DefaultTableModel) this.jTable1.getModel();
@@ -71,33 +76,33 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jBSeleccionar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Marca", "Stock", "Precio"
+                "ID", "Nombre", "Marca", "Stock", "Precio"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -106,28 +111,10 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nombre", "Marca", "Stock", "Precio"
+                "ID", "Nombre", "Marca", "Stock", "Precio"
             }
         ));
         jScrollPane1.setViewportView(jTable2);
@@ -149,7 +136,12 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
 
         jLabel4.setText("jLabel4");
 
-        jButton3.setText("Seleccionar");
+        jBSeleccionar.setText("Seleccionar");
+        jBSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSeleccionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,7 +171,7 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3))
+                                        .addComponent(jBSeleccionar))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
                                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -212,7 +204,7 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(103, 103, 103)
-                                .addComponent(jButton3)
+                                .addComponent(jBSeleccionar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
@@ -229,11 +221,15 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
         crearCompra();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jBSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSeleccionarActionPerformed
+        pasarProducto();
+    }//GEN-LAST:event_jBSeleccionarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBSeleccionar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jCProv;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -247,17 +243,17 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
- public void listarProductos() {
-        modelo.setRowCount(0);        
-            prodList = pData.listarProductos();
-            for (Producto producto : prodList) {
-                modelo.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
-                    producto.getStock(),producto.getPrecioActual()});
-            }       
+    public void listarProductos() {
+        modelo.setRowCount(0);
+        prodList = pData.listarProductos();
+        for (Producto producto : prodList) {
+            modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
+                producto.getStock(), producto.getPrecioActual()});
+        }
     }
 
     public void comboProv() {
-        
+
         provList = provData.listarProveedores();
         combo.addElement("--- Lista de Proveedores ---");
         for (Proveedor prov : provList) {
@@ -266,39 +262,69 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
         jCProv.setModel(combo);
     }
 
-    public void crearCompra(){
-        
-       if (jCProv.getSelectedIndex()==0 || jDateChooser1.getDate() == null ){ 
-             JOptionPane.showMessageDialog(null, "Complete los campos requeridos");
-        }else{
-            getFecha();
-        Compra compra = new Compra();
-        System.out.println(fecha);
-        compra.setFechaCompra(fecha);
-        
-        Proveedor proveedor = (Proveedor) jCProv.getSelectedItem();
-        compra.setProveedor(proveedor);
-        cData.insertarCompra(compra);
-        }
-        
-    }
-    public void getFecha() {
-           String fechaString = formato.format(jDateChooser1.getDate());
-           DateTimeFormatter format = new DateTimeFormatterBuilder().append(DateTimeFormatter.ofPattern("yyyy-MMM-dd")).toFormatter();
-           this.fecha = LocalDate.parse(fechaString, format);
-            System.out.println(fecha);       
-    }
-   
-    public void pasarProductor(){
-        
-        int[] selectedRows = jTable1.getSelectedRows();
+    public void crearCompra() {
 
-for (int i : selectedRows) {
-    Object[] rowData = new Object[modelo.getColumnCount()];
-    for (int j = 0; j < modelo1.getColumnCount(); j++) {
-        rowData[j] = modelo1.getValueAt(i, j);
+        if (jCProv.getSelectedIndex() == 0 || jDateChooser1.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Complete los campos requeridos");
+        } else {
+            getFecha();
+            Compra compra = new Compra();
+            System.out.println(fecha);
+            compra.setFechaCompra(fecha);
+            Proveedor proveedor = (Proveedor) jCProv.getSelectedItem();
+            compra.setProveedor(proveedor);
+            cData.insertarCompra(compra);
+        }
+
     }
-    modelo1.addRow(rowData);
-}
+
+    public void getFecha() {
+        String fechaString = formato.format(jDateChooser1.getDate());
+        DateTimeFormatter format = new DateTimeFormatterBuilder().append(DateTimeFormatter.ofPattern("yyyy-MMM-dd")).toFormatter();
+        this.fecha = LocalDate.parse(fechaString, format);
+        System.out.println(fecha);
     }
+
+    public void pasarProducto() {
+
+        int selectedRow = jTable1.getSelectedRow();
+        spinneR();
+        if (selectedRow != -1 && spinner > 0) {
+            Object value = modelo.getValueAt(selectedRow, 0);
+            idProd = Integer.parseInt(value.toString());
+            listarColumnaCompra();
+            System.out.println("Valor de la primera columna: " + value.toString());
+        } else {
+            System.out.println("Ninguna fila seleccionada.");
+        }
+    }
+
+    public void listarColumnaCompra() {
+
+        prodList = pData.listarProductosPorID(idProd);
+
+        for (Producto producto : prodList) {
+            if (spinner > producto.getStock()) {
+                JOptionPane.showMessageDialog(null, "Stock insuficiente para realizar el pedido");
+            } else {
+                modelo1.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
+                    spinner, producto.getPrecioActual()});
+                prod.setIdProducto(producto.getIdProducto());
+                prod.setNombreProducto(producto.getNombreProducto());
+                prod.setDescripcion(producto.getDescripcion());
+                prod.setPrecioActual(producto.getPrecioActual());             
+                prod.setStock(producto.getStock() - spinner);
+                pData.modificarProducto(prod);
+            }
+        }
+
+        listarProductos();
+    }
+
+    public void spinneR() {
+        SpinnerModel model = jSpinner1.getModel();
+        Object value = model.getValue();
+        spinner = (int) value;
+    }
+
 }

@@ -50,15 +50,16 @@ public class ProductoData {
         }      
     }
     public void modificarProducto(Producto producto){
-         String sql = "UPDATE producto SET nombreProducto=?,descripcion=?,precioActual=?,stock=?"
+         String sql = "UPDATE producto SET nombreProducto = ? ,descripcion = ?,precioActual = ?,stock = ? "
                 + "WHERE idProducto=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(5, producto.getIdProducto());
             ps.setString(1, producto.getNombreProducto());
             ps.setString(2, producto.getDescripcion());
             ps.setDouble(3, producto.getPrecioActual());
             ps.setInt(4, producto.getStock());
-            ps.setInt(5, producto.getIdProducto());
+            
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Producto modificado");
@@ -147,11 +148,11 @@ public class ProductoData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Producto producto = new Producto();
-               // producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombreProducto(rs.getString("nombreProducto"));
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
-                //producto.setStock(rs.getInt("stock"));
+                producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
 
                 listaProducto.add(producto);

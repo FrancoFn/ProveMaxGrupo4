@@ -447,7 +447,7 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
         //FUNCIONA
         interesX();
         Producto prodT = (Producto) jCProductos.getSelectedItem();        
-        producto = pData.listarProductosPorID(prodT.getIdProducto());
+        //producto = pData.listarProductosPorID(prodT.getIdProducto());
         double precio = prodT.getPrecioActual() * interes;
      //   prodT.setPrecioActual(precio);
         modelo.addRow(new Object[]{prodT.getIdProducto(), prodT.getNombreProducto(), prodT.getDescripcion(),
