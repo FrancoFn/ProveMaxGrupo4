@@ -84,17 +84,17 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Descripcion", "Precio", "Stock", "Estado"
+                "Id", "Nombre", "Descripcion", "Precio", "Stock"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -116,7 +116,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(3).setPreferredWidth(20);
             jTable1.getColumnModel().getColumn(4).setResizable(false);
             jTable1.getColumnModel().getColumn(4).setPreferredWidth(10);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jLabel1.setText("Gestion de Productos");
