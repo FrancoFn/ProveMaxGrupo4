@@ -236,7 +236,7 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         prodList = pData.listarProductos();
         for (Producto producto : prodList) {
             modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
-                producto.getStock(), producto.getPrecioActual()});
+                producto.getPrecioActual()});
         }
     }
 
