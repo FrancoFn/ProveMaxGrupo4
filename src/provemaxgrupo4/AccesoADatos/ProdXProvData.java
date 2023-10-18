@@ -76,7 +76,8 @@ public class ProdXProvData {
 
 
     public List<Producto> listarProductosPorID(int id){
-       String sql = "SELECT E.idProducto, E.nombreProducto,E.descripcion,E.precioActual FROM producto E join prodxprov P WHERE P.idProveedor = ? and E.idProducto=P.idProducto";
+       String sql = "SELECT E.idProducto, E.nombreProducto,E.descripcion,E.precioActual FROM producto E join prodxprov P WHERE"
+               + " P.idProveedor = ? and E.idProducto=P.idProducto";
         ArrayList<Producto> listaProducto = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);

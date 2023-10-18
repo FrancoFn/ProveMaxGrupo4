@@ -375,23 +375,25 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTDescripcionKeyTyped
 
     private void jTPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTPrecioFocusLost
+       if (!jTPrecio.getText().equals("")) {
         try {
             Double.parseDouble(jTPrecio.getText());
 
         } catch (NumberFormatException e) {
             jTPrecio.setText("");
             JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        }}
     }//GEN-LAST:event_jTPrecioFocusLost
 
     private void jTStockFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTStockFocusLost
+     if (!jTStock.getText().equals("")) {
         try {
             Integer.parseInt(jTStock.getText());
 
         } catch (NumberFormatException e) {
             jTStock.setText("");
-            JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+           JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }}
     }//GEN-LAST:event_jTStockFocusLost
 
     private void jTNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreFocusLost

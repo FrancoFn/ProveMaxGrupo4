@@ -68,7 +68,7 @@ public class VentasData {
         }  
     }
     
-    public Document CrearDoc(Document documento,FileOutputStream archivo,String nombre,String apellido, int telefono,String direccion,String nFact){
+    public Document CrearDoc(Document documento,FileOutputStream archivo,String nombre,String apellido, long telefono,String direccion,String nFact){
         
         try {
             //Document documento = new Document();

@@ -270,7 +270,7 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         }
     }
 
-    public void listarColumna() {
+   /* public void listarColumna() {
         modelo1.setRowCount(0);
         limpiarFilas();
         Proveedor proveedor = (Proveedor) jCProv.getSelectedItem();
@@ -280,7 +280,33 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
             modelo1.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
                 producto.getPrecioActual()});
         }
+    }*/
+    public void listarColumna() {
+    modelo1.setRowCount(0);
+    limpiarFilas();
+    Proveedor proveedor = (Proveedor) jCProv.getSelectedItem();
+    prodList = pxpData.listarProductosPorID(proveedor.getIdProveedor());
+
+    for (Producto producto : prodList) {
+        int idProducto = producto.getIdProducto();
+        // Comprobar si el ID ya está en la tabla
+        if (!contieneID(modelo1, idProducto)) {
+            modelo1.addRow(new Object[]{idProducto, producto.getNombreProducto(), producto.getDescripcion(), producto.getPrecioActual()});
+        }
     }
+}
+
+// Método para verificar si el ID ya está en la tabla
+private boolean contieneID(DefaultTableModel modelo, int id) {
+    for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+        int idEnTabla = (int) modelo.getValueAt(fila, 0);
+        if (idEnTabla == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
     public void eliminarProducto() {
 
         int selectedRow = jTable3.getSelectedRow();

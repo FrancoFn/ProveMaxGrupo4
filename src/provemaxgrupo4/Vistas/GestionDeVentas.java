@@ -163,11 +163,6 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
             }
         });
 
-        jTDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTDireccionFocusLost(evt);
-            }
-        });
         jTDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTDireccionKeyTyped(evt);
@@ -328,7 +323,7 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTApellidoFocusLost
 
     private void jTTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTTelefonoKeyTyped
-        char letra = evt.getKeyChar();
+         char letra = evt.getKeyChar();
 
         if (letra < '0' || letra > '9') {
             evt.consume();
@@ -336,33 +331,23 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTTelefonoKeyTyped
 
     private void jTTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoFocusLost
-        try {
-            Integer.parseInt(jTTelefono.getText());
+          if (!jTTelefono.getText().equals("")) {
+            try {
+                Long.parseLong(jTTelefono.getText());
 
-        } catch (NumberFormatException e) {
-            jTTelefono.setText("");
-            JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException e) {
+                jTTelefono.setText("");
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jTTelefonoFocusLost
 
     private void jTDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDireccionKeyTyped
-        char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+       char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') && (letra < '\'' || letra > '9')|| (jTDireccion.getText().length()>=50)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTDireccionKeyTyped
-
-    private void jTDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDireccionFocusLost
-        String texto = jTNombre.getText();
-        for (int i = 0; i < texto.length(); i++) {
-            if (Character.isDigit(texto.charAt(i))) {
-                jTNombre.setText("");
-                JOptionPane.showMessageDialog(this, "Solo se permiten letras, intente nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
-
-                break;
-            }
-        }
-    }//GEN-LAST:event_jTDireccionFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -431,17 +416,17 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     }
 
     private void interesX() {
-        if (jCCuotas.getSelectedIndex() == 0) {
+        if (jCCuotas.getSelectedIndex() == 1) {
             interes = 0.8;
-        } else if (jCCuotas.getSelectedIndex() == 1) {
-            interes = 1.25;
-        } else if (jCMedioPago.getSelectedIndex() == 0 && jCCuotas.getSelectedIndex() == 1) {
-            interes = 1;
         } else if (jCCuotas.getSelectedIndex() == 2) {
-            interes = 1.50;
+            interes = 1.25;
+        } else if (jCMedioPago.getSelectedIndex() == 1 && jCCuotas.getSelectedIndex() == 2) {
+            interes = 1;
         } else if (jCCuotas.getSelectedIndex() == 3) {
-            interes = 2;
+            interes = 1.50;
         } else if (jCCuotas.getSelectedIndex() == 4) {
+            interes = 2;
+        } else if (jCCuotas.getSelectedIndex() == 5) {
             interes = 4;
         }
 
@@ -499,7 +484,7 @@ public void limpiarDatos(){
             }
             documento = new Document();
             archivo = new FileOutputStream(ruta + "/OneDrive/Documentos/Factura Ventas/" + nombreArchivo);  
-            vData.CrearDoc(documento, archivo, jTNombre.getText(), jTApellido.getText(), Integer.parseInt(jTTelefono.getText()), jTDireccion.getText(),jLNFactura.getText());
+            vData.CrearDoc(documento, archivo, jTNombre.getText(), jTApellido.getText(), Long.parseLong(jTTelefono.getText()), jTDireccion.getText(),jLNFactura.getText());
             PdfPTable tabla = new PdfPTable(4);
             tabla.setWidthPercentage(100);
             PdfPCell id = new PdfPCell(new Phrase("ID"));
