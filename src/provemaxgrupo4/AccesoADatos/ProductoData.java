@@ -165,5 +165,29 @@ public class ProductoData {
         return listaProducto; 
     }
     
+         public Producto buscarProductoPorId(int id){
+       String sql = "SELECT * FROM producto WHERE estado =1 and idProducto = ?";
+      Producto producto = new Producto();
+       try (PreparedStatement ps = con.prepareStatement(sql)){
+            
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+               
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(true);
+                
+            }
+          
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+        }
+        return producto; 
+    }
     
 }

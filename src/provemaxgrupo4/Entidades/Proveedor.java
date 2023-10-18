@@ -2,6 +2,9 @@
 
 package provemaxgrupo4.Entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Sofia 
@@ -12,6 +15,7 @@ public class Proveedor {
     private String domicilio;
     private String telefono;
     private boolean activo;
+     private List<Producto>productosDisponibles=new ArrayList<>();
 
     public Proveedor() {
     }
@@ -79,6 +83,9 @@ public class Proveedor {
     }
 
     
+     public void cargarProducto(Producto producto){
+       productosDisponibles.add(producto);
+    }
     
     
     
