@@ -55,9 +55,9 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jBGuardar.setBackground(new java.awt.Color(36, 135, 246));
         jBGuardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBGuardar.setText("Guardar");
         jBGuardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -67,9 +67,9 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBModificar.setBackground(new java.awt.Color(36, 135, 246));
         jBModificar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBModificar.setForeground(new java.awt.Color(255, 255, 255));
-        jBModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBModificar.setText("Modificar");
         jBModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -79,9 +79,9 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBEliminar.setBackground(new java.awt.Color(36, 135, 246));
         jBEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBEliminar.setText("Eliminar");
         jBEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -91,9 +91,9 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBSalir.setBackground(new java.awt.Color(36, 135, 246));
         jBSalir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBSalir.setForeground(new java.awt.Color(255, 255, 255));
-        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBSalir.setText("Salir");
         jBSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -133,6 +133,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -181,7 +182,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             }
         });
 
-        jTDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTDescripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTDescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTDescripcionFocusLost(evt);
@@ -220,10 +221,9 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Id:");
 
-        jBLimpiar.setBackground(new java.awt.Color(255, 255, 255));
+        jBLimpiar.setBackground(new java.awt.Color(36, 135, 246));
         jBLimpiar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBLimpiar.setForeground(new java.awt.Color(255, 255, 255));
-        jBLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBLimpiar.setText("Limpiar");
         jBLimpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBLimpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -275,20 +275,20 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                             .addComponent(jLId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jRadioButton2)
                         .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBLimpiar)
-                        .addGap(55, 55, 55)
-                        .addComponent(jBModificar)
-                        .addGap(58, 58, 58)
-                        .addComponent(jBEliminar)
-                        .addGap(56, 56, 56)
-                        .addComponent(jBGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBSalir)
-                        .addContainerGap())))
+                        .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(201, 201, 201)
                 .addComponent(jLabel1)
