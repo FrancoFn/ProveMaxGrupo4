@@ -57,10 +57,9 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane2.setBackground(new java.awt.Color(201, 242, 255));
         jDesktopPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jBProducto.setBackground(new java.awt.Color(201, 242, 255));
+        jBProducto.setBackground(new java.awt.Color(36, 135, 246));
         jBProducto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBProducto.setForeground(new java.awt.Color(255, 255, 255));
-        jBProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBProducto.setText("Producto");
         jBProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -71,10 +70,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jBProveedor.setBackground(new java.awt.Color(201, 242, 255));
+        jBProveedor.setBackground(new java.awt.Color(36, 135, 246));
         jBProveedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBProveedor.setForeground(new java.awt.Color(255, 255, 255));
-        jBProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBProveedor.setText("Proveedor");
         jBProveedor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBProveedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -84,10 +82,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jBVentas.setBackground(new java.awt.Color(201, 242, 255));
+        jBVentas.setBackground(new java.awt.Color(36, 135, 246));
         jBVentas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBVentas.setForeground(new java.awt.Color(255, 255, 255));
-        jBVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBVentas.setText("Ventas");
         jBVentas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -97,10 +94,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jBCompras.setBackground(new java.awt.Color(201, 242, 255));
+        jBCompras.setBackground(new java.awt.Color(36, 135, 246));
         jBCompras.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBCompras.setForeground(new java.awt.Color(255, 255, 255));
-        jBCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jBCompras.setText("Compras");
         jBCompras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -110,8 +106,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(36, 135, 246));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rectangle_10239536.png"))); // NOI18N
         jButton2.setText("Catalogo");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -133,27 +130,29 @@ public class Menu extends javax.swing.JFrame {
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jBCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jBVentas))
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jBProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(jBProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jBVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addComponent(jBCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
