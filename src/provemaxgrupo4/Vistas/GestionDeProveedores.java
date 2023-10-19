@@ -46,19 +46,25 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextFieldDomicilio = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(201, 242, 255));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
 
-        jButtonSalir.setText("Salir");
+        jButtonSalir.setBackground(new java.awt.Color(36, 135, 246));
+        jButtonSalir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalir.setText("SALIR");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
 
-        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.setBackground(new java.awt.Color(36, 135, 246));
+        jButtonGuardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonGuardar.setText("GUARDAR");
         jButtonGuardar.setEnabled(false);
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +72,10 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setBackground(new java.awt.Color(36, 135, 246));
+        jButtonEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEliminar.setText("ELIMINAR");
         jButtonEliminar.setEnabled(false);
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +83,10 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonNuevo.setText("Limpiar");
+        jButtonNuevo.setBackground(new java.awt.Color(36, 135, 246));
+        jButtonNuevo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonNuevo.setText("LIMPIAR");
         jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNuevoActionPerformed(evt);
@@ -149,7 +161,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nombre");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PROVEEDORES");
 

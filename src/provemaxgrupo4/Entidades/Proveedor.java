@@ -15,8 +15,8 @@ public class Proveedor {
     private String domicilio;
     private String telefono;
     private boolean activo;
-     private List<Producto>productosDisponibles=new ArrayList<>();
-
+    private List<Producto>productosDisponibles=new ArrayList<>();
+    
     public Proveedor() {
     }
 
@@ -27,8 +27,8 @@ public class Proveedor {
         this.telefono = telefono;
          this.activo = activo;
     }
-
-    public Proveedor(String razonSocial, String domicilio, String telefono, boolean activo) {
+    
+     public Proveedor(String razonSocial, String domicilio, String telefono, boolean activo) {
         this.razonSocial = razonSocial;
         this.domicilio = domicilio;
         this.telefono = telefono;
@@ -36,6 +36,16 @@ public class Proveedor {
     }
     
     
+
+    public List<Producto> getProductosDisponibles() {
+        return productosDisponibles;
+    }
+
+    public void setProductosDisponibles(List<Producto> productosDisponibles) {
+        this.productosDisponibles = productosDisponibles;
+    }
+
+   
 
     public int getIdProveedor() {
         return idProveedor;
@@ -82,8 +92,7 @@ public class Proveedor {
             return razonSocial +", Codigo " + idProveedor ;
     }
 
-    
-     public void cargarProducto(Producto producto){
+    public void cargarProducto(Producto producto){
        productosDisponibles.add(producto);
     }
     
