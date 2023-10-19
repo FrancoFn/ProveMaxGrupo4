@@ -131,6 +131,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Codigo");
 
+        jButtonBuscar.setBackground(new java.awt.Color(36, 135, 246));
         jButtonBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
         jButtonBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -168,6 +169,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         buttonGroup1.add(radioButtonCrear);
         radioButtonCrear.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         radioButtonCrear.setText("CREAR");
+        radioButtonCrear.setOpaque(false);
         radioButtonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioButtonCrearActionPerformed(evt);
@@ -177,6 +179,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         buttonGroup1.add(radioButtonBuscar);
         radioButtonBuscar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         radioButtonBuscar.setText("BUSCAR / ELIMINAR");
+        radioButtonBuscar.setOpaque(false);
         radioButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioButtonBuscarActionPerformed(evt);
