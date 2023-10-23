@@ -59,6 +59,7 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         jBSeleccionar = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(201, 242, 255));
         setClosable(true);
@@ -132,8 +133,10 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         jScrollPane4.setViewportView(jTable3);
 
         jBSeleccionar.setBackground(new java.awt.Color(36, 135, 246));
+        jBSeleccionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBSeleccionar.setForeground(new java.awt.Color(255, 255, 255));
         jBSeleccionar.setText("SELECCIONAR");
+        jBSeleccionar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBSeleccionar.setPreferredSize(new java.awt.Dimension(117, 46));
         jBSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,8 +145,10 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         });
 
         jBEliminar.setBackground(new java.awt.Color(36, 135, 246));
+        jBEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        jBEliminar.setText("ELIMINAR");
+        jBEliminar.setText("Eliminar");
+        jBEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBEliminar.setPreferredSize(new java.awt.Dimension(117, 46));
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +160,17 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MERCADERIA DE PROVEEDORES");
 
+        jButton1.setBackground(new java.awt.Color(36, 135, 246));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Actualizar");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,12 +179,16 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCProv, 0, 298, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jCProv, 0, 248, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBSeleccionar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -181,17 +201,14 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
                 .addComponent(jCProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jBSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
@@ -216,10 +233,15 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         listarColumna();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        listarProductos();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBSeleccionar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCProv;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -231,7 +253,6 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
     private void limpiarFilas() {
         int filas = modelo1.getRowCount();
         for (int i = 0; i < filas; i++) {
-
             modelo1.removeRow(0);
         }
     }
@@ -267,7 +288,6 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
             idProv = proveedor.getIdProveedor();
             Object value = modelo.getValueAt(selectedRow, 0);
             idProd = Integer.parseInt(value.toString());
-            System.out.println("Valor de la primera columna: " + value.toString());
             pxpData.guardarProdXProv(idProv, idProd);
             listarColumna();
         } else {
@@ -275,42 +295,30 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         }
     }
 
-   /* public void listarColumna() {
+    public void listarColumna() {
         modelo1.setRowCount(0);
         limpiarFilas();
         Proveedor proveedor = (Proveedor) jCProv.getSelectedItem();
         prodList = pxpData.listarProductosPorID(proveedor.getIdProveedor());
-
         for (Producto producto : prodList) {
-            modelo1.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
-                producto.getPrecioActual()});
-        }
-    }*/
-    public void listarColumna() {
-    modelo1.setRowCount(0);
-    limpiarFilas();
-    Proveedor proveedor = (Proveedor) jCProv.getSelectedItem();
-    prodList = pxpData.listarProductosPorID(proveedor.getIdProveedor());
-
-    for (Producto producto : prodList) {
-        int idProducto = producto.getIdProducto();
-        // Comprobar si el ID ya está en la tabla
-        if (!contieneID(modelo1, idProducto)) {
-            modelo1.addRow(new Object[]{idProducto, producto.getNombreProducto(), producto.getDescripcion(), producto.getPrecioActual()});
+            int idProducto = producto.getIdProducto();
+            // Comprobar si el ID ya está en la tabla
+            if (!contieneID(modelo1, idProducto)) {
+                modelo1.addRow(new Object[]{idProducto, producto.getNombreProducto(), producto.getDescripcion(), producto.getPrecioActual()});
+            }
         }
     }
-}
 
 // Método para verificar si el ID ya está en la tabla
-private boolean contieneID(DefaultTableModel modelo, int id) {
-    for (int fila = 0; fila < modelo.getRowCount(); fila++) {
-        int idEnTabla = (int) modelo.getValueAt(fila, 0);
-        if (idEnTabla == id) {
-            return true;
+    private boolean contieneID(DefaultTableModel modelo, int id) {
+        for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+            int idEnTabla = (int) modelo.getValueAt(fila, 0);
+            if (idEnTabla == id) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
 
     public void eliminarProducto() {
 
@@ -320,9 +328,6 @@ private boolean contieneID(DefaultTableModel modelo, int id) {
             idProv = proveedor.getIdProveedor();
             Object value = modelo1.getValueAt(selectedRow, 0);
             idProd = Integer.parseInt(value.toString());
-            System.out.println("Valor de la primera columna: " + value.toString());
-            System.out.println(idProd);
-            System.out.println(idProv);
             pxpData.eliminarPxp(idProv, idProd);
             listarColumna();
         } else {

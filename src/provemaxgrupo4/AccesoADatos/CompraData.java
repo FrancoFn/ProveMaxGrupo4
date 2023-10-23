@@ -207,4 +207,21 @@ public class CompraData {
       
       return compra;
     }
+     public List<Compra> listarcompras() {
+        String sql = "SELECT * FROM compra";
+
+        ArrayList<Compra> listacompra = new ArrayList<>();
+
+        try (PreparedStatement ps = con.prepareStatement(sql)){
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Compra compra = new Compra();
+                compra.setFechaCompra(rs.getDate("fecha").toLocalDate());
+                listacompra.add(compra);
+            }         
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la compra");
+        }
+        return listacompra;
+    }
 }

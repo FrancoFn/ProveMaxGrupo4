@@ -95,10 +95,5 @@ public class Proveedor {
     public void cargarProducto(Producto producto){
        productosDisponibles.add(producto);
     }
-    
-    
-    
-    
-    
 
 }

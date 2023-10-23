@@ -25,7 +25,7 @@ public class ProveedorData {
        }
     
       
-       public void guardarProveedor(Proveedor proveedor) {
+      /* public void guardarProveedor(Proveedor proveedor) {
 
         String sql = "INSERT INTO proveedor (razonSocial, domicilio, telefono, estado)"
                 + "VALUES(?,?,?,?)";
@@ -48,7 +48,56 @@ public class ProveedorData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor//guardarProveedor");
         }
 
+    }*/
+       public void guardarProveedor(Proveedor proveedor) {
+    // Verificar si el proveedor ya existe en la base de datos
+    if (proveedorExiste(proveedor)) {
+        JOptionPane.showMessageDialog(null, "El proveedor ya existe en la base de datos.");
+        return;
     }
+
+    String sql = "INSERT INTO proveedor (razonSocial, domicilio, telefono, estado) VALUES (?,?,?,?)";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setString(1, proveedor.getRazonSocial());
+        ps.setString(2, proveedor.getDomicilio());
+        ps.setString(3, proveedor.getTelefono());
+        ps.setBoolean(4, proveedor.isActivo());
+        ps.executeUpdate();
+
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            proveedor.setIdProveedor(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "PROVEEDOR GUARDADO");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor//guardarProveedor");
+    }
+}
+
+// Método para comprobar si el proveedor ya existe en la base de datos
+private boolean proveedorExiste(Proveedor proveedor) {
+    String sql = "SELECT COUNT(*) FROM proveedor WHERE razonSocial = ? AND domicilio = ? AND telefono = ? AND estado = ?";
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, proveedor.getRazonSocial());
+        ps.setString(2, proveedor.getDomicilio());
+        ps.setString(3, proveedor.getTelefono());
+        ps.setBoolean(4, proveedor.isActivo());
+        ResultSet result = ps.executeQuery();
+        
+        if (result.next()) {
+            int count = result.getInt(1);
+            return count > 0; // Si count es mayor que 0, el proveedor ya existe.
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al comprobar la existencia del proveedor: " + ex.getMessage());
+    }
+    
+    return false;
+}
     
         public void modificarProveedor(Proveedor proveedor) {
 
