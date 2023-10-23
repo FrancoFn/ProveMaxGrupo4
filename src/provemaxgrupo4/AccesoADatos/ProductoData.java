@@ -27,28 +27,54 @@ public class ProductoData {
         con = Conexion.getConexion();
     }
     
-    public void insertarProducto(Producto producto){
-        String sql = "INSERT INTO producto (nombreProducto,descripcion,precioActual,stock "
-                + ",estado) VALUES (?,?,?,?,?)";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, producto.getNombreProducto());
-            ps.setString(2, producto.getDescripcion());
-            ps.setDouble(3, producto.getPrecioActual());
-            ps.setInt(4, producto.getStock());
-            ps.setBoolean(5, producto.isEstado());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                producto.setIdProducto(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Producto guardado");
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar producto");
-        }      
+    
+public void insertarProducto(Producto producto){
+    // Verificar si el producto ya existe en la base de datos
+    if (productoExiste(producto.getNombreProducto(), producto.getDescripcion())) {
+        JOptionPane.showMessageDialog(null, "El producto ya existe en la base de datos.");
+        return;
     }
+
+    String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, estado) VALUES (?,?,?,?,?)";
+    try {
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, producto.getNombreProducto());
+        ps.setString(2, producto.getDescripcion());
+        ps.setDouble(3, producto.getPrecioActual());
+        ps.setInt(4, producto.getStock());
+        ps.setBoolean(5, producto.isEstado());
+        ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            producto.setIdProducto(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "Producto guardado");
+        }
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al cargar producto");
+    }      
+}
+
+// Método para comprobar si el producto ya existe en la base de datos
+private boolean productoExiste(String nombreProducto, String descripcion) {
+    String sql = "SELECT COUNT(*) FROM producto WHERE nombreProducto = ? AND descripcion = ?";
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, nombreProducto);
+        ps.setString(2, descripcion); 
+        ResultSet result = ps.executeQuery();
+        
+        if (result.next()) {
+            int count = result.getInt(1);
+            return count > 0; // Si count es mayor que 0, el producto ya existe.
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al comprobar la existencia del producto: " + ex.getMessage());
+    }
+    
+    return false;
+}
     public void modificarProducto(Producto producto){
          String sql = "UPDATE producto SET nombreProducto = ? ,descripcion = ?,precioActual = ?,stock = ? "
                 + "WHERE idProducto=?";

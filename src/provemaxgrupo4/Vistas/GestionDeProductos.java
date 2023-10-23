@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import provemaxgrupo4.AccesoADatos.Conexion;
 import provemaxgrupo4.AccesoADatos.ProductoData;
 import provemaxgrupo4.Entidades.Producto;
+import provemaxgrupo4.Entidades.RowRenderer;
 
 public class GestionDeProductos extends javax.swing.JInternalFrame {
 
@@ -508,21 +509,24 @@ public void limpiaR() {
     }
 
     public void listarProductos() {
-        modelo.setRowCount(0);
-        if (jRadioButton1.isSelected()) {
-            prodList = pData.listarProductosActivos(1);
-            for (Producto producto : prodList) {
-                modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
-                    producto.getPrecioActual(), producto.getStock(), producto.isEstado()});
-            }
-        } else if (jRadioButton2.isSelected()) {
-            prodList = pData.listarProductosActivos(0);
-            for (Producto producto : prodList) {
-                modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
-                    producto.getPrecioActual(), producto.getStock(), producto.isEstado()});
-            }
+    modelo.setRowCount(0);
+    if (jRadioButton1.isSelected()) {
+        prodList = pData.listarProductosActivos(1);
+        for (Producto producto : prodList) {
+            modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
+                producto.getPrecioActual(), producto.getStock(), producto.isEstado()});
+        }
+    } else if (jRadioButton2.isSelected()) {
+        prodList = pData.listarProductosActivos(0);
+        for (Producto producto : prodList) {
+            modelo.addRow(new Object[]{producto.getIdProducto(), producto.getNombreProducto(), producto.getDescripcion(),
+                producto.getPrecioActual(), producto.getStock(), producto.isEstado()});
         }
     }
+    
+    // Aplica el renderizador personalizado a toda la tabla
+    jTable1.setDefaultRenderer(Object.class, new RowRenderer());
+}
 
     public void eliminarProducto() {
         pData.eliminarProducto(Integer.parseInt(jLId.getText()));
