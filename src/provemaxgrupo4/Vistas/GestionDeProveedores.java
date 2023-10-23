@@ -293,7 +293,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
 
     private void jTextFieldCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoKeyTyped
         char letra = evt.getKeyChar();
-        if ((letra < '0' || letra > '9')|| (jTextFieldCodigo.getText().length()>=11)) {
+        if ((letra < '0' || letra > '9') || (jTextFieldCodigo.getText().length() >= 11)) {
             evt.consume();
         } else {
             jComboBox1.setSelectedIndex(0);
@@ -302,9 +302,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             jTextFieldDomicilio.setText("");
             jButtonBuscar.setEnabled(true);
         }
-        if (!jTextFieldCodigo.getText().isEmpty()) {
-
-        } else {
+        if (jTextFieldCodigo.getText().isEmpty()) {
             jButtonEliminar.setEnabled(false);
         }
     }//GEN-LAST:event_jTextFieldCodigoKeyTyped
@@ -314,7 +312,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        obtenerMateria();
+        obtenerProveeder();
         jTextFieldTelefono.setEnabled(true);
         jTextFieldNombre.setEnabled(true);
         jTextFieldDomicilio.setEnabled(true);
@@ -323,7 +321,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
 
     private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
         char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')|| (jTextFieldNombre.getText().length()>=50)) {
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') || (jTextFieldNombre.getText().length() >= 50)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldNombreKeyTyped
@@ -331,7 +329,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     private void jTextFieldTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoKeyTyped
         char letra = evt.getKeyChar();
 
-        if ((letra < '0' || letra > '9') || (jTextFieldTelefono.getText().length()>=15)) {
+        if ((letra < '0' || letra > '9') || (jTextFieldTelefono.getText().length() >= 15)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldTelefonoKeyTyped
@@ -342,13 +340,13 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-      int id =0;
+        int id = 0;
         try {
-                  id = Integer.parseInt(jTextFieldCodigo.getText());
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(this, "Error en parseo - jButtonEliminarActionPerformed");
-                }
-        
+            id = Integer.parseInt(jTextFieldCodigo.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en parseo - jButtonEliminarActionPerformed");
+        }
+
         proveedorData.eliminarProveedor(id);
         limpiar();
         cargarComboBox();
@@ -356,18 +354,20 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         if (jTextFieldTelefono.getText().equals("")
-                || jTextFieldNombre.getText().equals("")) {
+                || jTextFieldNombre.getText().equals("")
+                || jTextFieldDomicilio.getText().equals("")
+                || (jTextFieldCodigo.getText().equals("") && jComboBox1.getSelectedIndex() == 0)) {
             JOptionPane.showInternalMessageDialog(this, "Complete los campos vacíos", "Error", 0);
         } else {
             proveedor = new Proveedor();
             proveedor.setRazonSocial(jTextFieldNombre.getText());
             if (!jTextFieldCodigo.getText().equals("")) {
                 try {
-                   proveedor.setIdProveedor(Integer.parseInt(jTextFieldCodigo.getText())); 
+                    proveedor.setIdProveedor(Integer.parseInt(jTextFieldCodigo.getText()));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this, "Error en parseo - metodo jButtonGuardarActionPerformed");
                 }
-                
+
             }
             proveedor.setDomicilio(jTextFieldDomicilio.getText());
             proveedor.setTelefono(jTextFieldTelefono.getText());
@@ -414,12 +414,17 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         if (jComboBox1.getSelectedIndex() != 0) {
-            proveedor = (Proveedor) jComboBox1.getSelectedItem();
+            //proveedor = (Proveedor) jComboBox1.getSelectedItem();
+            obtenerProveeder();
             jButtonBuscar.setEnabled(true);
-            jTextFieldCodigo.setText("");
+
+            jTextFieldTelefono.setEnabled(true);
+            jTextFieldNombre.setEnabled(true);
+            jTextFieldDomicilio.setEnabled(true);
         } else {
             jButtonBuscar.setEnabled(false);
-            jTextFieldCodigo.setEditable(false);
+            limpiar();
+            // jTextFieldCodigo.setEditable(false);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -441,7 +446,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
 
     private void jTextFieldDomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDomicilioKeyTyped
         char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') && (letra < '\'' || letra > '9')|| (jTextFieldDomicilio.getText().length()>=50)) {
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') && (letra < '\'' || letra > '9') || (jTextFieldDomicilio.getText().length() >= 50)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldDomicilioKeyTyped
@@ -515,16 +520,16 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         }
     }
 
-    private void obtenerMateria() {
+    private void obtenerProveeder() {
         if (jComboBox1.getSelectedIndex() != 0) {
             proveedor = (Proveedor) jComboBox1.getSelectedItem();
         } else {
             try {
-                   proveedor = proveedorData.buscarProveedor(Integer.parseInt(jTextFieldCodigo.getText()));
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(this, "Error en parseo - metodo obtenerMateria");
-                }
-            
+                proveedor = proveedorData.buscarProveedor(Integer.parseInt(jTextFieldCodigo.getText()));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error en parseo - metodo obtenerMateria");
+            }
+
         }
         if (proveedor != null) {
             jTextFieldTelefono.setText(proveedor.getTelefono() + "");
