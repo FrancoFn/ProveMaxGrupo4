@@ -477,7 +477,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
     private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
         char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') || (jTNombre.getText().length() >= 50)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTNombreKeyTyped
@@ -485,7 +485,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private void jTPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTPrecioKeyTyped
         char letra = evt.getKeyChar();
 
-        if (letra < '0' || letra > '9') {
+        if ((letra < '0' || letra > '9') || (jTPrecio.getText().length() >= 11))  {
             evt.consume();
         }
     }//GEN-LAST:event_jTPrecioKeyTyped
@@ -493,7 +493,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private void jTStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTStockKeyTyped
         char letra = evt.getKeyChar();
 
-        if (letra < '0' || letra > '9') {
+        if ((letra < '0' || letra > '9') || (jTStock.getText().length() >= 11))  {
             evt.consume();
         }
     }//GEN-LAST:event_jTStockKeyTyped
@@ -548,8 +548,8 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jTDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDescripcionKeyTyped
-        char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+         char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') && (letra < '\'' || letra > '9') || (jTDescripcion.getText().length() >= 50)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTDescripcionKeyTyped

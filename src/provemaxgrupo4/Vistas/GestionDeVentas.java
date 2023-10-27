@@ -431,13 +431,13 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Complete todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             crearPlantilla();
-            JOptionPane.showMessageDialog(this, "Puede encontrar su factura en\n /OneDrive/Documentos/Factura Ventas", "DESCARGA EXITOSA", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(getClass().getResource("/img/tildeverde.jpeg")));
+            JOptionPane.showMessageDialog(this, "Puede encontrar su factura en\n /OneDrive/Documentos/Factura Ventas", "DESCARGA EXITOSA", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(getClass().getResource("/img/tilde2.png")));
         }
     }//GEN-LAST:event_jBPDFActionPerformed
 
     private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
         char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') || (jTNombre.getText().length() >= 50)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTNombreKeyTyped
@@ -455,8 +455,8 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTNombreFocusLost
 
     private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
-        char letra = evt.getKeyChar();
-        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ')) {
+       char letra = evt.getKeyChar();
+        if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && (letra < ' ' || letra > ' ') || (jTApellido.getText().length() >= 50)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTApellidoKeyTyped
@@ -474,9 +474,9 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTApellidoFocusLost
 
     private void jTTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTTelefonoKeyTyped
-        char letra = evt.getKeyChar();
+         char letra = evt.getKeyChar();
 
-        if (letra < '0' || letra > '9') {
+        if ((letra < '0' || letra > '9') || (jTTelefono.getText().length() >= 15)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTTelefonoKeyTyped
