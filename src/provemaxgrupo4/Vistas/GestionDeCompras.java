@@ -23,7 +23,17 @@ import provemaxgrupo4.Entidades.Proveedor;
 
 public class GestionDeCompras extends javax.swing.JInternalFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo = new DefaultTableModel(null,
+            new String [] {
+                "ID", "Nombre", "Marca", "Precio"
+            }
+        ){
+        @Override
+        public boolean isCellEditable(int i, int i1) {
+            return false; 
+        }
+        
+    };
     DefaultComboBoxModel combo = new DefaultComboBoxModel();
     SpinnerModel modelsp = new SpinnerNumberModel();
     Compra compra = new Compra();
@@ -44,8 +54,14 @@ public class GestionDeCompras extends javax.swing.JInternalFrame {
 
     public GestionDeCompras() {
         initComponents();     
-        modelo = (DefaultTableModel) this.jTable1.getModel();
-        modelo1 = (DefaultTableModel) this.jTable2.getModel();
+//        modelo = (DefaultTableModel) this.jTable1.getModel();
+jTable1.setModel(modelo);
+        modelo1 = new DefaultTableModel(null, new String []{ "ID", "Nombre", "Marca","Stock", "Precio"}){
+          @Override
+        public boolean isCellEditable(int i, int i1) {
+            return false;    
+        }};
+        jTable2.setModel(modelo1);
         //  listarProductos();
         comboProv();
     }
