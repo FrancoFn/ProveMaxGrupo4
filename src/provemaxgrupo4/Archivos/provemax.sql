@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2023 a las 23:13:51
+-- Tiempo de generación: 27-10-2023 a las 23:22:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -43,7 +43,12 @@ INSERT INTO `compra` (`idCompra`, `proveedor`, `fecha`) VALUES
 (13, 2, '2023-10-11'),
 (14, 2, '2023-10-11'),
 (15, 2, '2023-10-10'),
-(16, 3, '2023-10-19');
+(16, 3, '2023-10-19'),
+(17, 3, '2023-10-25'),
+(18, 3, '2023-10-17'),
+(19, 3, '2023-10-11'),
+(20, 3, '2023-09-28'),
+(21, 4, '2023-09-27');
 
 -- --------------------------------------------------------
 
@@ -58,6 +63,16 @@ CREATE TABLE `detallecompra` (
   `compra` int(11) NOT NULL,
   `producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detallecompra`
+--
+
+INSERT INTO `detallecompra` (`idDetalle`, `cantidad`, `precioCosto`, `compra`, `producto`) VALUES
+(1, 5, 1600000, 18, 3),
+(2, 2, 300000, 19, 4),
+(3, 2, 300000, 20, 4),
+(4, 5, 250000, 21, 5);
 
 -- --------------------------------------------------------
 
@@ -77,7 +92,12 @@ CREATE TABLE `pdf` (
 INSERT INTO `pdf` (`idPDF`, `Nombre`) VALUES
 (1, '1 asd'),
 (2, '2 Franco'),
-(3, '3 Lucrecia');
+(3, '3 Lucrecia'),
+(4, '4 toto'),
+(5, '5 sssssssss'),
+(6, '5 sssssssss'),
+(7, '7 asd'),
+(8, '8 aaa');
 
 -- --------------------------------------------------------
 
@@ -99,10 +119,14 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idProducto`, `nombreProducto`, `descripcion`, `precioActual`, `stock`, `estado`) VALUES
-(1, 'Microhondas', 'AWT', 75000, 17, 1),
+(1, 'Microhondas', 'AWT', 75000, 22, 1),
 (2, 'Lavarropas', 'Dream', 42000, 27, 0),
-(3, 'Heladera', 'NoFrost', 320000, 20, 1),
-(4, 'Cocina', 'Florencia', 150000, 15, 1);
+(3, 'Heladera', 'NoFrost', 320000, 35, 1),
+(4, 'Cocina', 'Florencia', 150000, 17, 1),
+(5, 'Mini Pimer', 'lala', 50000, 16, 1),
+(6, 'Cafetera', 'Nescafe', 70000, 2, 1),
+(7, 'Lava Platos', 'Dream', 220000, 4, 1),
+(10, 'lala', 'asd', 123, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -122,6 +146,9 @@ CREATE TABLE `prodxprov` (
 INSERT INTO `prodxprov` (`idProveedor`, `idProducto`) VALUES
 (3, 3),
 (3, 4),
+(3, 1),
+(4, 5),
+(4, 1),
 (2, 1);
 
 -- --------------------------------------------------------
@@ -145,7 +172,8 @@ CREATE TABLE `proveedor` (
 INSERT INTO `proveedor` (`idProveedor`, `razonSocial`, `domicilio`, `telefono`, `estado`) VALUES
 (1, 'Luis S A', 'Virasoro 1224', '335489', 0),
 (2, 'Pp SRL', 'lala 123', '123', 1),
-(3, 'Frozen SRL', 'Garibaldi 2552', '4489563', 1);
+(3, 'Frozen SRL', 'Garibaldi 2552', '4489563', 1),
+(4, 'Roxana SA', 'Lala 123', '455555', 1);
 
 --
 -- Índices para tablas volcadas
@@ -199,31 +227,31 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `detallecompra`
 --
 ALTER TABLE `detallecompra`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `pdf`
 --
 ALTER TABLE `pdf`
-  MODIFY `idPDF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idPDF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

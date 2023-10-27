@@ -166,7 +166,6 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(201, 242, 255));
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
 
         panelAbajo.setBackground(new java.awt.Color(201, 242, 255));
         panelAbajo.setLayout(new java.awt.BorderLayout());

@@ -100,8 +100,6 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(201, 242, 255));
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setPreferredSize(new java.awt.Dimension(736, 560));
 
         panelTitulo.setPreferredSize(new java.awt.Dimension(720, 40));
