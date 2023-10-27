@@ -1,5 +1,7 @@
 package provemaxgrupo4.Vistas;
 
+import javax.swing.ImageIcon;
+
 public class Menu extends javax.swing.JFrame {
 
     GestionDeProductos gProd = new GestionDeProductos();
@@ -10,15 +12,19 @@ public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         initComponents();
-    }
+         this.setIconImage(new ImageIcon(getClass().getResource("/img/logosinfondo2.png")).getImage());
+ }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
+        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
+        jPanel3 = new javax.swing.JPanel();
         jBProducto = new javax.swing.JButton();
         jBProveedor = new javax.swing.JButton();
         jBVentas = new javax.swing.JButton();
@@ -26,156 +32,139 @@ public class Menu extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 600));
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
         escritorio.setBackground(new java.awt.Color(201, 242, 255));
+        escritorio.setPreferredSize(new java.awt.Dimension(609, 600));
 
+        jPanel4.setOpaque(false);
+        jPanel4.setPreferredSize(new java.awt.Dimension(500, 600));
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setBackground(new java.awt.Color(153, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Blue White Modern Laundry Business Logo.png"))); // NOI18N
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.setPreferredSize(new java.awt.Dimension(500, 600));
+        jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(jPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
-                .addContainerGap(316, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(290, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
 
-        jDesktopPane2.setBackground(new java.awt.Color(201, 242, 255));
-        jDesktopPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(escritorio, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanel3.setLayout(new java.awt.GridLayout(5, 0));
 
         jBProducto.setBackground(new java.awt.Color(36, 135, 246));
-        jBProducto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jBProducto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jBProducto.setForeground(new java.awt.Color(255, 255, 255));
-        jBProducto.setText("Producto");
+        jBProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hela.png"))); // NOI18N
+        jBProducto.setText("PRODUCTOS");
+        jBProducto.setAlignmentY(0.0F);
         jBProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jBProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBProducto.setDisabledSelectedIcon(null);
+        jBProducto.setFocusable(false);
+        jBProducto.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jBProducto.setName(""); // NOI18N
+        jBProducto.setPreferredSize(new java.awt.Dimension(200, 27));
         jBProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBProductoActionPerformed(evt);
             }
         });
+        jPanel3.add(jBProducto);
 
         jBProveedor.setBackground(new java.awt.Color(36, 135, 246));
-        jBProveedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jBProveedor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jBProveedor.setForeground(new java.awt.Color(255, 255, 255));
-        jBProveedor.setText("Proveedor");
+        jBProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prove.png"))); // NOI18N
+        jBProveedor.setText("PROVEEDORES");
         jBProveedor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jBProveedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBProveedor.setFocusable(false);
+        jBProveedor.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        jBProveedor.setMaximumSize(new java.awt.Dimension(189, 67));
+        jBProveedor.setMinimumSize(new java.awt.Dimension(189, 67));
+        jBProveedor.setPreferredSize(new java.awt.Dimension(230, 67));
         jBProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBProveedorActionPerformed(evt);
             }
         });
+        jPanel3.add(jBProveedor);
 
         jBVentas.setBackground(new java.awt.Color(36, 135, 246));
-        jBVentas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jBVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jBVentas.setForeground(new java.awt.Color(255, 255, 255));
-        jBVentas.setText("Ventas");
+        jBVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ventasla.png"))); // NOI18N
+        jBVentas.setText("VENTAS");
         jBVentas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jBVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBVentas.setFocusable(false);
+        jBVentas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        jBVentas.setPreferredSize(new java.awt.Dimension(55, 19));
         jBVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVentasActionPerformed(evt);
             }
         });
+        jPanel3.add(jBVentas);
+        jBVentas.getAccessibleContext().setAccessibleDescription("");
 
         jBCompras.setBackground(new java.awt.Color(36, 135, 246));
-        jBCompras.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jBCompras.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jBCompras.setForeground(new java.awt.Color(255, 255, 255));
-        jBCompras.setText("Compras");
+        jBCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compras.png"))); // NOI18N
+        jBCompras.setText("COMPRAS A PROVEEDOR");
         jBCompras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jBCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCompras.setFocusable(false);
+        jBCompras.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        jBCompras.setPreferredSize(new java.awt.Dimension(330, 107));
         jBCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBComprasActionPerformed(evt);
             }
         });
+        jPanel3.add(jBCompras);
 
         jButton2.setBackground(new java.awt.Color(36, 135, 246));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Catalogo");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/catal.png"))); // NOI18N
+        jButton2.setText(" CATALOGO PROVEEDOR");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel3.add(jButton2);
 
-        jDesktopPane2.setLayer(jBProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jBProveedor, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jBVentas, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jBCompras, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jPanel1.add(jPanel3, java.awt.BorderLayout.WEST);
 
-        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
-        jDesktopPane2.setLayout(jDesktopPane2Layout);
-        jDesktopPane2Layout.setHorizontalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jDesktopPane2Layout.setVerticalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jBProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jBProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jBVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jBCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(escritorio))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2)
-            .addComponent(escritorio)
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProductoActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //   escritorio.removeAll();
         escritorio.remove(gProd);
         escritorio.remove(proved);
@@ -183,39 +172,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.remove(gCompras);
         escritorio.remove(pxp);
         escritorio.repaint();
-        // GestionDeProductos gProd = new GestionDeProductos();
-        gProd.setVisible(true);
-        escritorio.add(gProd);
-        escritorio.moveToFront(gProd);
-    }//GEN-LAST:event_jBProductoActionPerformed
-
-    private void jBProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProveedorActionPerformed
-        //escritorio.removeAll();
-        escritorio.remove(gProd);
-        escritorio.remove(proved);
-        escritorio.remove(gVentas);
-        escritorio.remove(gCompras);
-        escritorio.remove(pxp);
-        escritorio.repaint();
-        //  GestionDeProveedores proved = new GestionDeProveedores();
-        proved.setVisible(true);
-        escritorio.add(proved);
-        escritorio.moveToFront(proved);
-    }//GEN-LAST:event_jBProveedorActionPerformed
-
-    private void jBVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVentasActionPerformed
-        // escritorio.removeAll();
-        escritorio.remove(gProd);
-        escritorio.remove(proved);
-        escritorio.remove(gVentas);
-        escritorio.remove(gCompras);
-        escritorio.remove(pxp);
-        escritorio.repaint();
-        //  GestionDeVentas gVentas = new GestionDeVentas();
-        gVentas.setVisible(true);
-        escritorio.add(gVentas);
-        escritorio.moveToFront(gVentas);
-    }//GEN-LAST:event_jBVentasActionPerformed
+        //   ProveedorXProducto pxp = new ProveedorXProducto();
+        pxp.setVisible(true);
+        escritorio.add(pxp);
+        escritorio.moveToFront(pxp);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jBComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprasActionPerformed
         //  escritorio.removeAll();
@@ -231,7 +192,35 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(gCompras);
     }//GEN-LAST:event_jBComprasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVentasActionPerformed
+        // escritorio.removeAll();
+        escritorio.remove(gProd);
+        escritorio.remove(proved);
+        escritorio.remove(gVentas);
+        escritorio.remove(gCompras);
+        escritorio.remove(pxp);
+        escritorio.repaint();
+        //  GestionDeVentas gVentas = new GestionDeVentas();
+        gVentas.setVisible(true);
+        escritorio.add(gVentas);
+        escritorio.moveToFront(gVentas);
+    }//GEN-LAST:event_jBVentasActionPerformed
+
+    private void jBProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProveedorActionPerformed
+        //escritorio.removeAll();
+        escritorio.remove(gProd);
+        escritorio.remove(proved);
+        escritorio.remove(gVentas);
+        escritorio.remove(gCompras);
+        escritorio.remove(pxp);
+        escritorio.repaint();
+        //  GestionDeProveedores proved = new GestionDeProveedores();
+        proved.setVisible(true);
+        escritorio.add(proved);
+        escritorio.moveToFront(proved);
+    }//GEN-LAST:event_jBProveedorActionPerformed
+
+    private void jBProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProductoActionPerformed
         //   escritorio.removeAll();
         escritorio.remove(gProd);
         escritorio.remove(proved);
@@ -239,11 +228,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.remove(gCompras);
         escritorio.remove(pxp);
         escritorio.repaint();
-        //   ProveedorXProducto pxp = new ProveedorXProducto();
-        pxp.setVisible(true);
-        escritorio.add(pxp);
-        escritorio.moveToFront(pxp);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        // GestionDeProductos gProd = new GestionDeProductos();
+        gProd.setVisible(true);
+        escritorio.add(gProd);
+        escritorio.moveToFront(gProd);
+    }//GEN-LAST:event_jBProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,7 +276,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jBProveedor;
     private javax.swing.JButton jBVentas;
     private javax.swing.JButton jButton2;
-    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
