@@ -13,28 +13,7 @@ import provemaxgrupo4.Entidades.Proveedor;
 
 public class ProveedorXProducto extends javax.swing.JInternalFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel(new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+    DefaultTableModel modelo = new DefaultTableModel(null,
             new String [] {
                 "ID", "Nombre", "Marca", "Precio"
             }
@@ -45,28 +24,7 @@ public class ProveedorXProducto extends javax.swing.JInternalFrame {
         }
         
     };
-    DefaultTableModel modelo1 = new DefaultTableModel(new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+    DefaultTableModel modelo1 = new DefaultTableModel(null,
             new String [] {
                 "ID", "Nombre", "Marca", "Precio"
             }

@@ -29,23 +29,8 @@ public class GestionDeVentas extends javax.swing.JInternalFrame {
     DefaultComboBoxModel combo = new DefaultComboBoxModel();
     DefaultComboBoxModel combo1 = new DefaultComboBoxModel();
     DefaultComboBoxModel combo2 = new DefaultComboBoxModel();
-    private DefaultTableModel modelo = new DefaultTableModel(new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+    private DefaultTableModel modelo = new DefaultTableModel(null,
+            
             new String [] {
                 "ID", "Nombre", "Descripcion", "Precio"
             }
