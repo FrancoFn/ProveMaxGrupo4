@@ -50,7 +50,6 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(201, 242, 255));
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
 
         jButtonSalir.setBackground(new java.awt.Color(36, 135, 246));
         jButtonSalir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
