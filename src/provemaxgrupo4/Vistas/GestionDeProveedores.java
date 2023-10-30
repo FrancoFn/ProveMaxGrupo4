@@ -383,8 +383,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         if (jTextFieldTelefono.getText().equals("")
                 || jTextFieldNombre.getText().equals("")
-                || jTextFieldDomicilio.getText().equals("")
-                || (jTextFieldCodigo.getText().equals("") && jComboBox1.getSelectedIndex() == 0)) {
+                || jTextFieldDomicilio.getText().equals("")) {
             JOptionPane.showInternalMessageDialog(this, "Complete los campos vacíos", "Error", 0);
         } else {
             proveedor = new Proveedor();
@@ -405,7 +404,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             cargarComboBox();
         }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
-    
+
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
@@ -498,7 +497,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             jTextFieldDomicilio.setEnabled(true);
         } else {
             jButtonBuscar.setEnabled(false);
-            
+
             limpiar();
             // jTextFieldCodigo.setEditable(false);
         }
@@ -534,11 +533,11 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jTextFieldTelefono.setEnabled(true);
         jTextFieldNombre.setEnabled(true);
         jTextFieldDomicilio.setEnabled(true);
-     
+
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-       if (jTextFieldTelefono.getText().equals("")
+        if (jTextFieldTelefono.getText().equals("")
                 || jTextFieldNombre.getText().equals("")
                 || jTextFieldDomicilio.getText().equals("")
                 || (jTextFieldCodigo.getText().equals("") && jComboBox1.getSelectedIndex() == 0)) {
@@ -564,14 +563,14 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jCheckBoxEditarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEditarDatosActionPerformed
-    boolean select=jCheckBoxEditarDatos.isSelected();
-    
+        boolean select = jCheckBoxEditarDatos.isSelected();
+
         jTextFieldNombre.setEditable(select);
         jTextFieldTelefono.setEditable(select);
         jTextFieldDomicilio.setEditable(select);
-       if(jButtonEliminar.isEnabled()){
-        jButtonModificar.setEnabled(select);
-       }
+        if (jButtonEliminar.isEnabled()) {
+            jButtonModificar.setEnabled(select);
+        }
     }//GEN-LAST:event_jCheckBoxEditarDatosActionPerformed
 
 
@@ -612,10 +611,16 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jButtonModificar.setEnabled(false);
         jButtonGuardar.setEnabled(false);
         jCheckBoxEditarDatos.setSelected(false);
-        
-        jTextFieldNombre.setEditable(false);
-        jTextFieldTelefono.setEditable(false);
-        jTextFieldDomicilio.setEditable(false);
+
+        if (radioButtonBuscar.isSelected()) {
+            jTextFieldNombre.setEditable(false);
+            jTextFieldTelefono.setEditable(false);
+            jTextFieldDomicilio.setEditable(false);
+        } else {
+            jTextFieldNombre.setEditable(true);
+            jTextFieldTelefono.setEditable(true);
+            jTextFieldDomicilio.setEditable(true);
+        }
     }
 
     private void cargarComboBox() {
@@ -646,10 +651,11 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             jTextFieldDomicilio.setText(proveedor.getDomicilio() + "");
 
             jButtonEliminar.setEnabled(true);
-            if (jCheckBoxEditarDatos.isSelected()){
-            jButtonModificar.setEnabled(true);
-            
-            }}
+            if (jCheckBoxEditarDatos.isSelected()) {
+                jButtonModificar.setEnabled(true);
+
+            }
+        }
     }
 
     private void activarBotonGuardar() {
