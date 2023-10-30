@@ -173,6 +173,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.remove(pxp);
         escritorio.repaint();
         //   ProveedorXProducto pxp = new ProveedorXProducto();
+        pxp.comboProv();
         pxp.setVisible(true);
         escritorio.add(pxp);
         escritorio.moveToFront(pxp);
