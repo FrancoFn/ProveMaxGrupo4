@@ -46,6 +46,8 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jTextFieldCodigo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButtonBuscar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
+        jCheckBoxEditarDatos = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(201, 242, 255));
         setClosable(true);
@@ -241,6 +243,27 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jButtonModificar.setBackground(new java.awt.Color(36, 135, 246));
+        jButtonModificar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonModificar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonModificar.setText("MODIFICAR");
+        jButtonModificar.setEnabled(false);
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxEditarDatos.setBackground(new java.awt.Color(201, 242, 255));
+        jCheckBoxEditarDatos.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        jCheckBoxEditarDatos.setText("Editar Datos");
+        jCheckBoxEditarDatos.setEnabled(false);
+        jCheckBoxEditarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxEditarDatosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -248,15 +271,6 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -266,26 +280,45 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButtonCrear)
-                                .addGap(46, 46, 46)
-                                .addComponent(radioButtonBuscar))
                             .addComponent(jTextFieldDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(radioButtonCrear)
+                        .addGap(48, 48, 48)
+                        .addComponent(radioButtonBuscar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jCheckBoxEditarDatos)
+                .addGap(199, 199, 199))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonBuscar)
-                    .addComponent(radioButtonCrear))
-                .addGap(22, 22, 22)
+                    .addComponent(radioButtonCrear)
+                    .addComponent(radioButtonBuscar))
+                .addGap(5, 5, 5)
+                .addComponent(jCheckBoxEditarDatos)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -306,7 +339,8 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
                     .addComponent(jButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -369,8 +403,9 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             proveedorData.guardarProveedor(proveedor);
             limpiar();
             cargarComboBox();
+        }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
-    }
+    
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
@@ -387,7 +422,9 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jTextFieldDomicilio.setEnabled(true);
         jTextFieldDomicilio.setEditable(true);
         jButtonBuscar.setEnabled(false);
-
+        jCheckBoxEditarDatos.setEnabled(false);
+        jCheckBoxEditarDatos.setSelected(false);
+        jButtonModificar.setEnabled(false);
     }//GEN-LAST:event_radioButtonCrearActionPerformed
 
     private void radioButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonBuscarActionPerformed
@@ -402,6 +439,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jTextFieldDomicilio.setEnabled(false);
         jTextFieldDomicilio.setEditable(false);
         jButtonBuscar.setEnabled(true);
+        jCheckBoxEditarDatos.setEnabled(true);
 
 
     }//GEN-LAST:event_radioButtonBuscarActionPerformed
@@ -460,6 +498,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             jTextFieldDomicilio.setEnabled(true);
         } else {
             jButtonBuscar.setEnabled(false);
+            
             limpiar();
             // jTextFieldCodigo.setEditable(false);
         }
@@ -486,6 +525,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         }
         if (jTextFieldCodigo.getText().isEmpty()) {
             jButtonEliminar.setEnabled(false);
+            jButtonModificar.setEnabled(false);
         }
     }//GEN-LAST:event_jTextFieldCodigoKeyTyped
 
@@ -494,7 +534,45 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         jTextFieldTelefono.setEnabled(true);
         jTextFieldNombre.setEnabled(true);
         jTextFieldDomicilio.setEnabled(true);
+     
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+       if (jTextFieldTelefono.getText().equals("")
+                || jTextFieldNombre.getText().equals("")
+                || jTextFieldDomicilio.getText().equals("")
+                || (jTextFieldCodigo.getText().equals("") && jComboBox1.getSelectedIndex() == 0)) {
+            JOptionPane.showInternalMessageDialog(this, "Complete los campos vacíos", "Error", 0);
+        } else {
+            proveedor = new Proveedor();
+            proveedor.setRazonSocial(jTextFieldNombre.getText());
+            if (!jTextFieldCodigo.getText().equals("")) {
+                try {
+                    proveedor.setIdProveedor(Integer.parseInt(jTextFieldCodigo.getText()));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this, "Error en parseo - metodo jButtonGuardarActionPerformed");
+                }
+
+            }
+            proveedor.setDomicilio(jTextFieldDomicilio.getText());
+            proveedor.setTelefono(jTextFieldTelefono.getText());
+            proveedor.setActivo(true);
+            proveedorData.modificarProveedor(proveedor);
+            limpiar();
+            cargarComboBox();
+        }
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
+    private void jCheckBoxEditarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEditarDatosActionPerformed
+    boolean select=jCheckBoxEditarDatos.isSelected();
+    
+        jTextFieldNombre.setEditable(select);
+        jTextFieldTelefono.setEditable(select);
+        jTextFieldDomicilio.setEditable(select);
+       if(jButtonEliminar.isEnabled()){
+        jButtonModificar.setEnabled(select);
+       }
+    }//GEN-LAST:event_jCheckBoxEditarDatosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -502,8 +580,10 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonNuevo;
     private javax.swing.JButton jButtonSalir;
+    private javax.swing.JCheckBox jCheckBoxEditarDatos;
     private javax.swing.JComboBox<Object> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -529,7 +609,13 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
         radioButtonBuscar.setSelected(false);
         radioButtonCrear.setSelected(false);
         jButtonEliminar.setEnabled(false);
+        jButtonModificar.setEnabled(false);
         jButtonGuardar.setEnabled(false);
+        jCheckBoxEditarDatos.setSelected(false);
+        
+        jTextFieldNombre.setEditable(false);
+        jTextFieldTelefono.setEditable(false);
+        jTextFieldDomicilio.setEditable(false);
     }
 
     private void cargarComboBox() {
@@ -560,7 +646,10 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             jTextFieldDomicilio.setText(proveedor.getDomicilio() + "");
 
             jButtonEliminar.setEnabled(true);
-        }
+            if (jCheckBoxEditarDatos.isSelected()){
+            jButtonModificar.setEnabled(true);
+            
+            }}
     }
 
     private void activarBotonGuardar() {
